@@ -194,7 +194,7 @@ bool Pointer<T, size>::collect(){
 template <class T, int size>
 T *Pointer<T, size>::operator=(T *t){
 
-    // TODO: Implement operator==
+    // TODO: Implement operator=
     // LAB: Smart Pointer Project Lab
     typename std::list<PtrDetails<T> >::iterator p;
     // First, decrement the reference count
@@ -204,7 +204,13 @@ T *Pointer<T, size>::operator=(T *t){
     // Next, increment the reference count of
     // the new address.
     p = findPtrInfo(t); // what if t is not in refCounter?
-    p->refcount++;  // increment ref count
+    if (p != refContainer.end()){
+        p->refcount++;  // increment ref count
+    } else {
+        PtrDetails<T> _p(t, size);
+        refContainer.push_back(_p);
+    }
+    
     addr = t; // store the address.
     return t;
 
