@@ -3,11 +3,14 @@ The final project for this Memory Management course is to implement your own ver
 
 ## Project TODO List:
 - Complete `Pointer` constructor
+
 Hints from peer students:
 1. To implement the GC Pointer constructor, you need to create a PtrDetails object, and add it to the refContainer list. You also need to initialize Pointer member variables (addr, isArray and arraySize). Then you can create an iterator, findPtrInfo for the address, and increment the refcount. (by Levente H)
 
 - Complete `Pointer` `operator==`
+
 Hints from peer students:
+1. You also have to check if this Pointer is already in the refContainer because it might have been initialized with another value or assigned another value before. (by Manfred K)
 
 - Complete `Pointer` destructor
 - Complete `PtrDetails` class
